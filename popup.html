@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 350px;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .status {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .settings {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .setting-item label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .url-section {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .url-section h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .url-section p {
+            margin: 0 0 10px 0;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .progress {
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #00ff88, #00ccff);
+            transition: width 0.3s ease;
+        }
+
+        .example-url {
+            font-size: 10px;
+            opacity: 0.7;
+            margin-top: 5px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔍 Bing Rewards Auto Search</h1>
+
+        <div class="status" id="status">
+            准备就绪
+        </div>
+
+        <div class="controls">
+            <button id="startBtn">开始自动搜索</button>
+            <button id="stopBtn" disabled>停止搜索</button>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+        </div>
+
+        <div class="settings">
+            <div class="setting-item">
+                <label>搜索次数:</label>
+                <input type="number" id="searchCount" value="50" min="1" max="100">
+            </div>
+            <div class="setting-item">
+                <label>搜索间隔(秒):</label>
+                <input type="number" id="searchInterval" value="3" min="1" max="10">
+            </div>
+        </div>
+
+        <div class="url-section">
+            <h3>🔗 URL 补充参数</h3>
+            <p>添加必要的参数以确保获得积分：</p>
+            <input type="text" id="urlSuffix"
+                placeholder="&qs=HS&sk=HS3&sc=8-0&cvid=8130CC689B484DB3BDB96687EFD44C65&FORM=QBLH&sp=4&lq=0"
+                title="输入URL补充参数，以&开头">
+            <div class="example-url" id="exampleUrl">
+                示例: &qs=HS&sk=HS3&sc=8-0&cvid=8130CC689B484DB3BDB96687EFD44C65&FORM=QBLH&sp=4&lq=0
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

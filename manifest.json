@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Bing Rewards Auto Search",
+  "version": "1.0",
+  "description": "自动在Bing搜索中随机搜索关键词以获取积分",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.bing.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Bing Rewards Auto Search"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.bing.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+} 
