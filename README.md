@@ -1,6 +1,7 @@
 # Bing Rewards Auto Search - Edge 浏览器插件
 
 这是一个用于自动在 Bing 搜索中随机搜索关键词以获取Rewards积分的 Edge 浏览器插件。
+![Uploading image.png…]()
 
 ## 功能特点
 
